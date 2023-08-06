@@ -1,0 +1,27 @@
+{
+	"name": "MCH Hero: #3",
+	"image": "https://www.mycryptoheroes.net/images/heroes/2000/4006.png",
+    "description": "Heroes are unique characters, originated from My Crypto Heroes. Pick your hero and compete in the MCH universe! ",
+	"attributes": [
+		{
+			"trait_type": "Background",
+			"value": "Gold"
+		},
+		{
+			"trait_type": "Type",
+			"value": "Sword"
+		},
+		{
+			"trait_type": "buff-ratio",
+			"value": "0.3"
+		},
+		{
+			"trait_type": "buff-type",
+			"value": "Attack"
+		},
+		{
+			"trait_type": "buff-value",
+			"value": "2.0"
+		}
+	]
+}
