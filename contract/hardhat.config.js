@@ -6,7 +6,9 @@ require('dotenv').config();
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const API_URL_MCH = process.env.API_URL_MCH;
 const API_URL_MUMBAI = process.env.API_URL_MUMBAI;
+const API_URL_SHIBUYA = process.env.API_URL_SHIBUYA;
 const API_KEY_MUMBAI = process.env.API_KEY_MUMBAI;
+const API_KEY_SHIBUYA = process.env.API_KEY_SHIBUYA;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -60,6 +62,10 @@ module.exports = {
     mumbai:{
       url: API_URL_MUMBAI,
       accounts: [PRIVATE_KEY]
+    },
+    shibuya: {
+      url: API_URL_SHIBUYA,
+      accounts: [PRIVATE_KEY]
     }
   },
   namedAccounts: {
@@ -68,18 +74,26 @@ module.exports = {
   etherscan: {  // copy the Etherscan object from the verify Contracts secion on Dashboard 
     apiKey: {
       mch: 'abc',
-      polygonMumbai: API_KEY_MUMBAI
+      polygonMumbai: API_KEY_MUMBAI,
+      shibuya: API_KEY_SHIBUYA
     },
     customChains: [
       {
         network: 'mch',
         chainId: 420,
         urls: {
-        // Blockscout
         apiURL: 'https://explorer.oasys.sand.mchdfgh.xyz/api',
         browserURL: 'https://explorer.oasys.sand.mchdfgh.xyz'
         }
        },
+       {
+        network: 'shibuya',
+        chainId: 81,
+        urls: {
+          apiURL: 'https://blockscout.com/shibuya/api',
+          browserURL: 'https://blockscout.com/shibuya'
+        }
+       }
     ],
   },
 };
