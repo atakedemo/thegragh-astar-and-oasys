@@ -12,15 +12,16 @@ services:
       - ipfs
       - postgres
     extra_hosts:
-      - host.docker.internal:host-gateway
+      - 172.25.0.1:host-gateway
     environment:
       postgres_host: postgres
       postgres_user: graph-node
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      #ethereum: 'mainnet:http://host.docker.internal:8545'
-      ethereum: 'mumbai:https://polygon-mumbai.g.alchemy.com/v2/XfoX4Vg1rQjEG85P719b85NCn98wVEFG'
+      #ethereum: 'mainnet:http://172.25.0.1:8545'
+      #ethereum: 'mumbai:https://polygon-mumbai.g.alchemy.com/v2/XfoX4Vg1rQjEG85P719b85NCn98wVEFG'
+      ethereum: 'shibuya:https://shibuya.blastapi.io/3881d67a-6c2a-4403-83df-200efcf06ec7'
       GRAPH_LOG: info
   ipfs:
     image: ipfs/go-ipfs:v0.10.0
