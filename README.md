@@ -118,8 +118,45 @@ The Graphでインデックスを作成するNFTのコントラクトをShibuya�
    Subgraph endpoints:
    Queries (HTTP):     http://localhost:8000/subgraphs/name/atakedemo/la-itemnft-astar
    ```
-  
+
+### 3.表示用フロントエンドの作成
+1. アプリの作成
+   ``` bash
+   npx create-next-app front-web
+   ```
+2. ライブラリインストール
+   ``` bash
+   cd front-web
+   npm install @apollo/client 
+   ```
+3. 接続先の変更｜front-web/pages/_app.tsx でDockerにてローカルで立ち上げたGraphノードへの接続情報を設定する。
+   ```
+   const client = new ApolloClient({
+     cache: new InMemoryCache(),
+     //uri: 'https://api.studio.thegraph.com/query/34004/[プロジェクト名]/[バージョン名]',
+     uri: 'http://localhost:8000/subgraphs/name/atakedemo/la-itemnft-astar',
+   })
+
+    export default function App({ Component, pageProps }: AppProps) {
+      return (
+        <ApolloProvider client={client}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      )
+    } 
+   ```
+4. ローカルで起動
+   ``` bash
+   npx run dev  
+   ```
+
+***
+# Oasys テストネットでの対応
+各接続先情報をOasysテストネットのものや、Verce Layerのテストネットの接続先情報へ変更する
+（追記中）
+
 ***
 # 参考資料
 * [Deploy Subgraphs to Any EVM](https://medium.com/coinmonks/deploy-subgraphs-to-any-evm-aaaccc3559f)
 * [The Graph | Astar Docs](https://docs.astar.network/docs/build/integrations/indexers/thegraph)
+* [TheGraph(Subgraph)を使って独自のERC20トークンの保有者一覧をフロント（React）に表示する - Qiita](https://qiita.com/toshiaki_takase/items/761435120d7ca9c7ff6c#react%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E6%A7%8B%E7%AF%89)
